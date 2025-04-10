@@ -5,6 +5,7 @@ import { Navigation } from '@/components/Navigation'
 import { Footer } from '@/components/Footer'
 import { Providers } from '@/components/Providers'
 import { CustomCursor } from '@/components/CustomCursor'
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import './globals.css'
 
 const inter = Inter({
@@ -43,6 +44,7 @@ export default function RootLayout({
             <Footer />
           </div>
           <Analytics />
+          <SpeedInsights />
         </Providers>
       </body>
     </html>

@@ -1,12 +1,10 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export default function Home() {
   return (
     <>
-      <SpeedInsights/>
       <main className="min-h-screen p-8 md:p-12 lg:p-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
