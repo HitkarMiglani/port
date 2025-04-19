@@ -1,111 +1,464 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import Image from 'next/image'
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { useState } from "react";
+import { ArrowRight, Search } from "lucide-react";
 
+// Animation variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
+// More comprehensive blog data with additional fields
 const blogPosts = [
   {
     id: 1,
-    title: 'Building Modern Web Applications with Next.js',
+    title: "Building Modern Web Applications with Next.js",
     excerpt:
-      'Learn how to build modern, performant web applications using Next.js and React.',
-    date: 'March 15, 2023',
-    readTime: '5 min read',
-    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    category: 'Web Development',
+      "Learn how to build modern, performant web applications using Next.js and React.",
+    content: "Full content would go here...",
+    date: "March 15, 2024",
+    readTime: "5 min read",
+    image:
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    category: "Web Development",
+    featured: true,
+    author: "Hitkar Miglani",
+    authorImage: "/profile-pic.jpg",
+    tags: ["Next.js", "React", "JavaScript"],
   },
   {
     id: 2,
-    title: 'The Future of CSS: Tailwind CSS and Utility-First Approach',
+    title: "The Future of CSS: Tailwind CSS and Utility-First Approach",
     excerpt:
-      'Explore the benefits of utility-first CSS and how Tailwind CSS is changing the way we style web applications.',
-    date: 'February 28, 2023',
-    readTime: '4 min read',
-    image: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    category: 'CSS',
+      "Explore the benefits of utility-first CSS and how Tailwind CSS is changing the way we style web applications.",
+    content: "Full content would go here...",
+    date: "February 28, 2024",
+    readTime: "4 min read",
+    image:
+      "https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    category: "CSS",
+    featured: false,
+    author: "Hitkar Miglani",
+    authorImage: "/profile-pic.jpg",
+    tags: ["CSS", "Tailwind", "Web Design"],
   },
   {
     id: 3,
-    title: 'TypeScript: Why You Should Use It in Your Next Project',
+    title: "TypeScript: Why You Should Use It in Your Next Project",
     excerpt:
-      'Discover the benefits of using TypeScript in your Next.js projects and how it can improve your development experience.',
-    date: 'February 10, 2023',
-    readTime: '6 min read',
-    image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    category: 'TypeScript',
+      "Discover the benefits of using TypeScript in your Next.js projects and how it can improve your development experience.",
+    content: "Full content would go here...",
+    date: "February 10, 2024",
+    readTime: "6 min read",
+    image:
+      "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    category: "TypeScript",
+    featured: false,
+    author: "Hitkar Miglani",
+    authorImage: "/profile-pic.jpg",
+    tags: ["TypeScript", "JavaScript", "Programming"],
   },
-]
+  {
+    id: 4,
+    title: "Introduction to Machine Learning with Python",
+    excerpt:
+      "A beginner-friendly guide to getting started with machine learning using Python and popular libraries like scikit-learn.",
+    content: "Full content would go here...",
+    date: "January 25, 2024",
+    readTime: "8 min read",
+    image:
+      "https://images.unsplash.com/photo-1527474305487-b87b222841cc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    category: "Machine Learning",
+    featured: true,
+    author: "Hitkar Miglani",
+    authorImage: "/profile-pic.jpg",
+    tags: ["Machine Learning", "Python", "Data Science"],
+  },
+  {
+    id: 5,
+    title: "Creating Animations with Framer Motion",
+    excerpt:
+      "Learn how to create stunning animations for your React applications using the powerful Framer Motion library.",
+    content: "Full content would go here...",
+    date: "January 12, 2024",
+    readTime: "5 min read",
+    image:
+      "https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    category: "Animation",
+    featured: false,
+    author: "Hitkar Miglani",
+    authorImage: "/profile-pic.jpg",
+    tags: ["React", "Animation", "Framer Motion"],
+  },
+  {
+    id: 6,
+    title: "Web Accessibility: Best Practices for Inclusive Design",
+    excerpt:
+      "Explore essential accessibility practices that every web developer should implement for creating inclusive web applications.",
+    content: "Full content would go here...",
+    date: "December 20, 2023",
+    readTime: "7 min read",
+    image:
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    category: "Accessibility",
+    featured: false,
+    author: "Hitkar Miglani",
+    authorImage: "/profile-pic.jpg",
+    tags: ["Accessibility", "Web Development", "HTML"],
+  },
+];
+
+// All unique categories from blog posts
+const allCategories = Array.from(
+  new Set(blogPosts.map((post) => post.category))
+);
 
 export default function Blog() {
-  return (
-    <div className="container mx-auto px-4 py-12">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="max-w-6xl mx-auto"
-      >
-        <h1 className="text-4xl md:text-5xl font-display font-bold mb-12 bg-gradient-to-r from-primary-500 to-primary-700 bg-clip-text text-transparent">
-          Blog
-        </h1>
+  const [searchQuery, setSearchQuery] = useState("");
+  const [activeCategory, setActiveCategory] = useState("All");
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map((post, index) => (
-            <motion.article
-              key={post.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
-            >
-              <div className="relative h-48 w-full">
-                <Image
-                  src={post.image}
-                  alt={post.title}
-                  fill
-                  className="object-cover"
+  // Filter posts based on search query and category
+  const filteredPosts = blogPosts.filter((post) => {
+    const matchesSearch =
+      post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      post.tags.some((tag) =>
+        tag.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+
+    const matchesCategory =
+      activeCategory === "All" || post.category === activeCategory;
+
+    return matchesSearch && matchesCategory;
+  });
+
+  // Featured posts
+  const featuredPosts = blogPosts.filter((post) => post.featured);
+
+  return (
+    <div className="min-h-screen pt-24 pb-16">
+      {/* Hero Section */}
+      <section className="px-8 md:px-12 lg:px-24 mb-16">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"
+          className="max-w-6xl mx-auto"
+        >
+          <motion.h1
+            variants={itemVariants}
+            className="text-4xl md:text-6xl font-display font-bold mb-6 bg-gradient-to-r from-primary-500 to-primary-700 bg-clip-text text-transparent text-center"
+          >
+            My Blog
+          </motion.h1>
+          <motion.p
+            variants={itemVariants}
+            className="text-lg md:text-xl text-gray-600 dark:text-gray-300 text-center max-w-3xl mx-auto mb-12"
+          >
+            Thoughts, tutorials, and insights on web development, machine
+            learning, and other technologies I'm passionate about.
+          </motion.p>
+
+          {/* Search and Filter Bar */}
+          <motion.div
+            variants={itemVariants}
+            className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-md mb-12"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+              {/* Search input */}
+              <div className="md:col-span-5 relative">
+                <input
+                  type="text"
+                  placeholder="Search articles..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full px-4 py-2 pl-10 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-500"
                 />
-                <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 bg-primary-500 text-white text-sm rounded-full">
-                    {post.category}
-                  </span>
-                </div>
+                <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
               </div>
-              <div className="p-6">
-                <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-2">
-                  <span>{post.date}</span>
-                  <span className="mx-2">•</span>
-                  <span>{post.readTime}</span>
-                </div>
-                <h2 className="text-xl font-display font-bold mb-2 text-gray-900 dark:text-white">
-                  {post.title}
-                </h2>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  {post.excerpt}
-                </p>
-                <a
-                  href="#"
-                  className="inline-flex items-center text-primary-500 hover:text-primary-600 transition-colors"
+
+              {/* Category filters */}
+              <div className="md:col-span-7 flex flex-wrap gap-2 justify-start md:justify-end">
+                <button
+                  onClick={() => setActiveCategory("All")}
+                  className={`px-3 py-1.5 rounded-lg transition-colors text-sm ${
+                    activeCategory === "All"
+                      ? "bg-primary-500 text-white"
+                      : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600"
+                  }`}
                 >
-                  Read More
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5 ml-1"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
+                  All
+                </button>
+                {allCategories.map((category) => (
+                  <button
+                    key={category}
+                    onClick={() => setActiveCategory(category)}
+                    className={`px-3 py-1.5 rounded-lg transition-colors text-sm ${
+                      activeCategory === category
+                        ? "bg-primary-500 text-white"
+                        : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600"
+                    }`}
                   >
-                    <path
-                      fillRule="evenodd"
-                      d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </a>
+                    {category}
+                  </button>
+                ))}
               </div>
-            </motion.article>
-          ))}
-        </div>
-      </motion.div>
+            </div>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Featured Posts */}
+      {searchQuery === "" && activeCategory === "All" && (
+        <section className="px-8 md:px-12 lg:px-24 mb-16">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="max-w-6xl mx-auto"
+          >
+            <h2 className="text-3xl font-display font-bold mb-4">
+              Featured Posts
+            </h2>
+            <div className="w-20 h-1 bg-primary-500 mb-8"></div>
+
+            <div className="grid grid-cols-1 gap-8">
+              {featuredPosts.map((post, index) => (
+                <motion.article
+                  key={post.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="grid md:grid-cols-12 gap-6 bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+                >
+                  <div className="md:col-span-5">
+                    <div className="relative h-64 md:h-full w-full">
+                      <Image
+                        src={post.image}
+                        alt={post.title}
+                        fill
+                        className="object-cover"
+                      />
+                      <div className="absolute top-4 left-4">
+                        <span className="px-3 py-1 bg-primary-500 text-white text-sm font-medium rounded-full">
+                          {post.category}
+                        </span>
+                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60"></div>
+                    </div>
+                  </div>
+
+                  <div className="p-6 md:col-span-7 flex flex-col">
+                    <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-3">
+                      <span>{post.date}</span>
+                      <span className="mx-2">•</span>
+                      <span>{post.readTime}</span>
+                    </div>
+
+                    <h2 className="text-2xl md:text-3xl font-display font-bold mb-4 text-gray-900 dark:text-white">
+                      {post.title}
+                    </h2>
+
+                    <p className="text-gray-600 dark:text-gray-300 mb-6 flex-grow">
+                      {post.excerpt}
+                    </p>
+
+                    <div className="flex justify-between items-center mt-4">
+                      <div className="flex items-center">
+                        <div className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center overflow-hidden mr-2">
+                          {/* Replace with actual author image when available */}
+                          <span className="text-sm font-bold">HM</span>
+                          {/* <Image 
+                            src={post.authorImage} 
+                            alt={post.author} 
+                            width={32} 
+                            height={32} 
+                            className="object-cover"
+                          /> */}
+                        </div>
+                        <span className="text-sm text-gray-600 dark:text-gray-400">
+                          {post.author}
+                        </span>
+                      </div>
+                      <a
+                        href={`/blog/${post.id}`}
+                        className="inline-flex items-center text-primary-500 hover:text-primary-600 font-medium"
+                      >
+                        Read More <ArrowRight className="ml-1 h-4 w-4" />
+                      </a>
+                    </div>
+                  </div>
+                </motion.article>
+              ))}
+            </div>
+          </motion.div>
+        </section>
+      )}
+
+      {/* All Blog Posts Grid */}
+      <section className="px-8 md:px-12 lg:px-24">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="max-w-6xl mx-auto"
+        >
+          <div className="mb-8 flex justify-between items-center">
+            <h2 className="text-3xl font-display font-bold">
+              {activeCategory === "All" ? "All Articles" : activeCategory}
+            </h2>
+            {filteredPosts.length > 0 && (
+              <span className="text-gray-500 dark:text-gray-400 text-sm">
+                Showing {filteredPosts.length}{" "}
+                {filteredPosts.length === 1 ? "post" : "posts"}
+              </span>
+            )}
+          </div>
+
+          {filteredPosts.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredPosts.map((post, index) => (
+                <motion.article
+                  key={post.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: (index % 6) * 0.1 }}
+                  className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group"
+                >
+                  <div className="relative h-48 w-full overflow-hidden">
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute top-4 left-4">
+                      <span className="px-3 py-1 bg-primary-500 text-white text-sm rounded-full">
+                        {post.category}
+                      </span>
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-70"></div>
+                  </div>
+
+                  <div className="p-6">
+                    <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-2">
+                      <span>{post.date}</span>
+                      <span className="mx-2">•</span>
+                      <span>{post.readTime}</span>
+                    </div>
+
+                    <h3 className="text-xl font-display font-bold mb-3 text-gray-900 dark:text-white line-clamp-2">
+                      {post.title}
+                    </h3>
+
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+                      {post.excerpt}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {post.tags.map((tag, tagIndex) => (
+                        <span
+                          key={tagIndex}
+                          className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs rounded-full"
+                        >
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="flex justify-between items-center">
+                      <div className="flex items-center">
+                        <div className="w-6 h-6 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center overflow-hidden mr-2">
+                          <span className="text-xs font-bold">HM</span>
+                        </div>
+                        <span className="text-xs text-gray-600 dark:text-gray-400">
+                          {post.author}
+                        </span>
+                      </div>
+                      <a
+                        href={`/blog/${post.id}`}
+                        className="inline-flex items-center text-primary-500 hover:text-primary-600 font-medium text-sm"
+                      >
+                        Read More <ArrowRight className="ml-1 h-4 w-4" />
+                      </a>
+                    </div>
+                  </div>
+                </motion.article>
+              ))}
+            </div>
+          ) : (
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-12 text-center shadow-md">
+              <h3 className="text-2xl font-medium mb-4">No articles found</h3>
+              <p className="text-gray-600 dark:text-gray-400 mb-6">
+                Try changing your search criteria or category
+              </p>
+              <button
+                onClick={() => {
+                  setActiveCategory("All");
+                  setSearchQuery("");
+                }}
+                className="px-6 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors"
+              >
+                Clear Filters
+              </button>
+            </div>
+          )}
+        </motion.div>
+      </section>
+
+      {/* Newsletter Subscription */}
+      <section className="mt-24 px-8 md:px-12 lg:px-24 py-16 bg-gradient-to-r from-primary-500 to-primary-700 text-white">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="max-w-4xl mx-auto text-center"
+        >
+          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
+            Stay Updated
+          </h2>
+          <p className="text-lg mb-8 text-white/90 max-w-2xl mx-auto">
+            Subscribe to my newsletter to receive notifications about new blog
+            posts, tutorials, and updates.
+          </p>
+
+          <form className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+            <input
+              type="email"
+              placeholder="Your email address"
+              className="px-4 py-3 rounded-lg flex-grow text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
+            />
+            <button
+              type="submit"
+              className="px-6 py-3 bg-white text-primary-600 font-medium rounded-lg hover:bg-gray-100 transition-colors"
+            >
+              Subscribe
+            </button>
+          </form>
+
+          <p className="mt-4 text-sm text-white/70">
+            No spam, unsubscribe at any time.
+          </p>
+        </motion.div>
+      </section>
     </div>
-  )
-} 
+  );
+}
