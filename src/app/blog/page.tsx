@@ -167,10 +167,17 @@ export default function Blog() {
         body: JSON.stringify({ email: subscribeEmail }),
       });
 
+      // Handle non-JSON responses
+      const contentType = response.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        console.error("Non-JSON response received:", await response.text());
+        throw new Error("Server returned an invalid response format");
+      }
+
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || "Something went wrong");
+        throw new Error(data.error || "Server error occurred");
       }
 
       setSubscribeSuccess(true);

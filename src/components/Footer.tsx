@@ -31,10 +31,17 @@ export function Footer() {
         body: JSON.stringify({ email }),
       });
 
+      // Handle non-JSON responses
+      const contentType = response.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        console.error("Non-JSON response received:", await response.text());
+        throw new Error("Server returned an invalid response format");
+      }
+
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || "Something went wrong");
+        throw new Error(data.error || "Server error occurred");
       }
 
       setSubmitSuccess(true);
@@ -82,8 +89,7 @@ export function Footer() {
                   <path
                     fillRule="evenodd"
                     d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
+                    clipRule="evenodd" />
                 </svg>
                 <span>Thank you for subscribing to our newsletter!</span>
               </div>
@@ -99,8 +105,7 @@ export function Footer() {
                   <path
                     fillRule="evenodd"
                     d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                    clipRule="evenodd"
-                  />
+                    clipRule="evenodd" />
                 </svg>
                 <span>
                   There was an error with your subscription. Please try again.
@@ -118,16 +123,13 @@ export function Footer() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="px-4 py-2.5 rounded-lg flex-grow border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary-500"
-              />
+                className="px-4 py-2.5 rounded-lg flex-grow border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary-500" />
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`px-5 py-2.5 bg-primary-500 text-white font-medium rounded-lg transition-colors ${
-                  isSubmitting
+                className={`px-5 py-2.5 bg-primary-500 text-white font-medium rounded-lg transition-colors ${isSubmitting
                     ? "opacity-70 cursor-not-allowed"
-                    : "hover:bg-primary-600"
-                }`}
+                    : "hover:bg-primary-600"}`}
               >
                 {isSubmitting ? (
                   <div className="flex items-center">
@@ -143,13 +145,11 @@ export function Footer() {
                         cy="12"
                         r="10"
                         stroke="currentColor"
-                        strokeWidth="4"
-                      />
+                        strokeWidth="4" />
                       <path
                         className="opacity-75"
                         fill="currentColor"
-                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                      />
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                     </svg>
                     Subscribing...
                   </div>
@@ -159,6 +159,7 @@ export function Footer() {
               </button>
             </form>
           </motion.div>
+        </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -352,28 +353,26 @@ export function Footer() {
               </div>
             </div>
           </motion.div>
-        </div>
-
-        <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-500 dark:text-gray-400 mb-4 md:mb-0">
-            &copy; {currentYear} Hitkar Miglani. All rights reserved.
-          </p>
-          <div className="flex space-x-6">
-            <Link
-              href="/privacy"
-              className="text-sm text-gray-500 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href="/terms"
-              className="text-sm text-gray-500 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
-            >
-              Terms of Service
-            </Link>
           </div>
+        <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center">
+        <p className="text-gray-500 dark:text-gray-400 mb-4 md:mb-0">
+          &copy; {currentYear} Hitkar Miglani. All rights reserved.
+        </p>
+        <div className="flex space-x-6">
+          <Link
+            href="/privacy"
+            className="text-sm text-gray-500 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
+          >
+            Privacy Policy
+          </Link>
+          <Link
+            href="/terms"
+            className="text-sm text-gray-500 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
+          >
+            Terms of Service
+          </Link>
         </div>
       </div>
     </footer>
-  );
+    );
 }
