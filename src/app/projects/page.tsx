@@ -215,7 +215,7 @@ export default function Projects() {
             <h2 className="text-3xl font-display font-bold mb-4">
               Featured Projects
             </h2>
-            <div className="w-20 h-1 bg-primary-500 mb-8"></div>
+            <div className="w-20 h-1 bg-primary-500 mb-8" />
 
             <div className="grid grid-cols-1 gap-12">
               {projects
@@ -244,7 +244,7 @@ export default function Projects() {
                           fill
                           className="object-cover"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"/>
                       </div>
                     </div>
 
@@ -336,7 +336,7 @@ export default function Projects() {
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-70"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-70" />
                     <div className="absolute bottom-4 left-4">
                       <span className="inline-block px-2 py-1 text-xs font-medium bg-white/20 backdrop-blur-sm text-white rounded-md">
                         {project.completionDate}
@@ -419,7 +419,7 @@ export default function Projects() {
             Interested in working together?
           </h2>
           <p className="text-lg mb-8 text-white/90">
-            Let's discuss how my skills and experience can help bring your
+            Let&apos;s discuss how my skills and experience can help bring your
             project to life.
           </p>
           <a

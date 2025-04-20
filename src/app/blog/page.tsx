@@ -129,6 +129,11 @@ const allCategories = Array.from(
 export default function Blog() {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
+  const [subscribeEmail, setSubscribeEmail] = useState("");
+  const [isSubscribing, setIsSubscribing] = useState(false);
+  const [subscribeSuccess, setSubscribeSuccess] = useState<boolean | null>(
+    null
+  );
 
   // Filter posts based on search query and category
   const filteredPosts = blogPosts.filter((post) => {
@@ -147,6 +152,41 @@ export default function Blog() {
 
   // Featured posts
   const featuredPosts = blogPosts.filter((post) => post.featured);
+
+  // Handle newsletter form submission
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubscribing(true);
+
+    try {
+      const response = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: subscribeEmail }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Something went wrong");
+      }
+
+      setSubscribeSuccess(true);
+      setSubscribeEmail("");
+
+      // Reset the success message after 5 seconds
+      setTimeout(() => {
+        setSubscribeSuccess(null);
+      }, 5000);
+    } catch (error) {
+      console.error("Error subscribing to newsletter:", error);
+      setSubscribeSuccess(false);
+    } finally {
+      setIsSubscribing(false);
+    }
+  };
 
   return (
     <div className="min-h-screen pt-24 pb-16">
@@ -169,7 +209,7 @@ export default function Blog() {
             className="text-lg md:text-xl text-gray-600 dark:text-gray-300 text-center max-w-3xl mx-auto mb-12"
           >
             Thoughts, tutorials, and insights on web development, machine
-            learning, and other technologies I'm passionate about.
+            learning, and other technologies I&apos;m passionate about.
           </motion.p>
 
           {/* Search and Filter Bar */}
@@ -234,7 +274,7 @@ export default function Blog() {
             <h2 className="text-3xl font-display font-bold mb-4">
               Featured Posts
             </h2>
-            <div className="w-20 h-1 bg-primary-500 mb-8"></div>
+            <div className="w-20 h-1 bg-primary-500 mb-8" />
 
             <div className="grid grid-cols-1 gap-8">
               {featuredPosts.map((post, index) => (
@@ -259,7 +299,7 @@ export default function Blog() {
                           {post.category}
                         </span>
                       </div>
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60" />
                     </div>
                   </div>
 
@@ -354,7 +394,7 @@ export default function Blog() {
                         {post.category}
                       </span>
                     </div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-70"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-70" />
                   </div>
 
                   <div className="p-6">
@@ -440,19 +480,37 @@ export default function Blog() {
             posts, tutorials, and updates.
           </p>
 
-          <form className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+          <form
+            className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto"
+            onSubmit={handleNewsletterSubmit}
+          >
             <input
               type="email"
               placeholder="Your email address"
+              value={subscribeEmail}
+              onChange={(e) => setSubscribeEmail(e.target.value)}
               className="px-4 py-3 rounded-lg flex-grow text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
+              required
             />
             <button
               type="submit"
               className="px-6 py-3 bg-white text-primary-600 font-medium rounded-lg hover:bg-gray-100 transition-colors"
+              disabled={isSubscribing}
             >
-              Subscribe
+              {isSubscribing ? "Subscribing..." : "Subscribe"}
             </button>
           </form>
+
+          {subscribeSuccess === true && (
+            <p className="mt-4 text-sm text-green-400">
+              Successfully subscribed to the newsletter!
+            </p>
+          )}
+          {subscribeSuccess === false && (
+            <p className="mt-4 text-sm text-red-400">
+              Failed to subscribe. Please try again.
+            </p>
+          )}
 
           <p className="mt-4 text-sm text-white/70">
             No spam, unsubscribe at any time.

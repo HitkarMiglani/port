@@ -58,7 +58,7 @@ export default function About() {
                   />
                   */}
                 </div>
-                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-tr from-primary-500/30 to-transparent opacity-60"></div>
+                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-tr from-primary-500/30 to-transparent opacity-60"/>
               </div>
             </motion.div>
 
@@ -68,12 +68,12 @@ export default function About() {
               className="md:col-span-7 space-y-6"
             >
               <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
-                I'm a motivated Computer Science & Engineering student with a
+                I&apos;m a motivated Computer Science & Engineering student with a
                 passion for AI, Machine Learning, and building modern web
                 applications that solve real-world problems.
               </p>
               <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
-                Currently in my 2nd year of study, I'm combining my academic
+                Currently in my 2nd year of study, I&apos;m combining my academic
                 knowledge with practical projects to develop a well-rounded
                 skill set in software development and data science.
               </p>
@@ -108,7 +108,7 @@ export default function About() {
         >
           <div className="text-center mb-12">
             <h2 className="text-3xl font-display font-bold mb-4">My Journey</h2>
-            <div className="w-20 h-1 bg-primary-500 mx-auto mb-4"></div>
+            <div className="w-20 h-1 bg-primary-500 mx-auto mb-4"/>
             <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               My path in technology began with a curiosity about how things work
               digitally and has evolved into a passion for creating elegant
@@ -119,7 +119,7 @@ export default function About() {
           {/* Timeline */}
           <div className="relative">
             {/* Timeline line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary-500 to-primary-700 z-0"></div>
+            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary-500 to-primary-700 z-0"/>
 
             {/* Timeline events */}
             {[
@@ -216,7 +216,7 @@ export default function About() {
                         <div
                           className="bg-primary-500 h-2 rounded-full"
                           style={{ width: "90%" }}
-                        ></div>
+                        />
                       </div>
                     </div>
                     <div className="mb-3">
@@ -228,7 +228,7 @@ export default function About() {
                         <div
                           className="bg-primary-500 h-2 rounded-full"
                           style={{ width: "85%" }}
-                        ></div>
+                        />
                       </div>
                     </div>
                     <div className="mb-3">
@@ -240,7 +240,7 @@ export default function About() {
                         <div
                           className="bg-primary-500 h-2 rounded-full"
                           style={{ width: "80%" }}
-                        ></div>
+                        />
                       </div>
                     </div>
                     <div className="mb-3">
@@ -252,7 +252,7 @@ export default function About() {
                         <div
                           className="bg-primary-500 h-2 rounded-full"
                           style={{ width: "75%" }}
-                        ></div>
+                        />
                       </div>
                     </div>
                   </div>
@@ -267,15 +267,15 @@ export default function About() {
                       <h4 className="font-semibold mb-2">Frontend</h4>
                       <ul className="space-y-1 text-gray-700 dark:text-gray-300">
                         <li className="flex items-center">
-                          <div className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-2"></div>
+                          <div className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-2"/>
                           Next.js
                         </li>
                         <li className="flex items-center">
-                          <div className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-2"></div>
+                          <div className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-2"/>
                           Tailwind CSS
                         </li>
                         <li className="flex items-center">
-                          <div className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-2"></div>
+                          <div className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-2"/>
                           BootStrap
                         </li>
                       </ul>
@@ -284,15 +284,15 @@ export default function About() {
                       <h4 className="font-semibold mb-2">Backend & ML</h4>
                       <ul className="space-y-1 text-gray-700 dark:text-gray-300">
                         <li className="flex items-center">
-                          <div className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-2"></div>
+                          <div className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-2"/>
                           TensorFlow
                         </li>
                         <li className="flex items-center">
-                          <div className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-2"></div>
+                          <div className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-2"/>
                           Node.js
                         </li>
                         <li className="flex items-center">
-                          <div className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-2"></div>
+                          <div className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-2"/>
                           MongoDB
                         </li>
                       </ul>
@@ -386,7 +386,7 @@ export default function About() {
         >
           <div className="text-center mb-12">
             <h2 className="text-3xl font-display font-bold mb-4">My Values</h2>
-            <div className="w-20 h-1 bg-primary-500 mx-auto mb-4"></div>
+            <div className="w-20 h-1 bg-primary-500 mx-auto mb-4"/>
             <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               The core principles that guide my work and learning approach.
             </p>
