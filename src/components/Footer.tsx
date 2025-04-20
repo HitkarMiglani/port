@@ -160,7 +160,7 @@ export function Footer() {
             </form>
           </motion.div>
         </div>
-        </div>
+        
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <motion.div
@@ -372,6 +372,7 @@ export function Footer() {
             Terms of Service
           </Link>
         </div>
+      </div>
       </div>
     </footer>
     );
