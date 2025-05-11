@@ -109,7 +109,7 @@ export default function Contact() {
             className="text-lg md:text-xl text-gray-600 dark:text-gray-300 text-center max-w-3xl mx-auto mb-12"
           >
             Have a project in mind or want to discuss potential opportunities?
-            I'd love to hear from you. Fill out the form below or reach out
+            I&apos;d love to hear from you. Fill out the form below or reach out
             through any of my contact channels.
           </motion.p>
         </motion.div>
@@ -141,10 +141,10 @@ export default function Contact() {
                   <h3 className="text-lg font-medium mb-1">Email</h3>
                   <p className="text-gray-600 dark:text-gray-400">
                     <a
-                      href="mailto:contact@example.com"
+                      href="mailto:miglanihitkar@gmail.com"
                       className="hover:text-primary-500 transition-colors"
                     >
-                      contact@example.com
+                      miglanihitkar@gmail.com
                     </a>
                   </p>
                 </div>
@@ -170,10 +170,10 @@ export default function Contact() {
                   <h3 className="text-lg font-medium mb-1">Phone</h3>
                   <p className="text-gray-600 dark:text-gray-400">
                     <a
-                      href="tel:+1234567890"
+                      href="tel:+918901511976"
                       className="hover:text-primary-500 transition-colors"
                     >
-                      +91 12345 67890
+                      +91 8901511976
                     </a>
                   </p>
                 </div>
@@ -184,7 +184,7 @@ export default function Contact() {
               <h3 className="text-lg font-medium mb-4">Connect with me</h3>
               <div className="flex space-x-4">
                 <a
-                  href="https://github.com/"
+                  href="https://github.com/HitkarMiglani"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition-colors"
@@ -192,7 +192,7 @@ export default function Contact() {
                   <Github size={20} />
                 </a>
                 <a
-                  href="https://linkedin.com/"
+                  href="https://linkedin.com/in/hitkar_miglani"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition-colors"
@@ -202,6 +202,7 @@ export default function Contact() {
                 <a
                   href="https://twitter.com/"
                   target="_blank"
+                  aria-hidden="true"
                   rel="noopener noreferrer"
                   className="p-3 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition-colors"
                 >
@@ -214,7 +215,7 @@ export default function Contact() {
               <div className="p-6 bg-gray-50 dark:bg-gray-800/50 rounded-xl border border-gray-100 dark:border-gray-800">
                 <h3 className="text-lg font-medium mb-2">Office Hours</h3>
                 <p className="text-gray-600 dark:text-gray-400 mb-4">
-                  I'm available for meetings and discussions during these hours:
+                  I&apos;m available for meetings and discussions during these hours:
                 </p>
                 <ul className="space-y-2 text-gray-600 dark:text-gray-400">
                   <li className="flex justify-between">
@@ -222,12 +223,8 @@ export default function Contact() {
                     <span>9:00 AM - 6:00 PM</span>
                   </li>
                   <li className="flex justify-between">
-                    <span>Saturday</span>
+                    <span>Saturday - Sunday</span>
                     <span>10:00 AM - 2:00 PM</span>
-                  </li>
-                  <li className="flex justify-between">
-                    <span>Sunday</span>
-                    <span>Closed</span>
                   </li>
                 </ul>
               </div>
@@ -259,7 +256,7 @@ export default function Contact() {
                   />
                 </svg>
                 <span>
-                  Your message has been sent successfully! I'll get back to you
+                  Your message has been sent successfully! I will get back to you
                   soon.
                 </span>
               </div>
@@ -414,10 +411,8 @@ export default function Contact() {
             <div className="aspect-[16/9] w-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center relative">
               {/* Replace with actual embedded map if needed */}
               <div className="absolute inset-0 flex items-center justify-center bg-gray-200 dark:bg-gray-700">
-                <MapPin className="h-12 w-12 text-gray-400 dark:text-gray-500" />
-                <p className="absolute mt-16 text-gray-500 dark:text-gray-400">
-                  Map placeholder - Replace with actual embedded map
-                </p>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3437.1749717999555!2d76.65720287471218!3d30.51609109607206!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390fc32344a6e2d7%3A0x81b346dee91799ca!2sChitkara%20University!5e0!3m2!1sen!2sin!4v1746971462248!5m2!1sen!2sin" className="w-full aspect-[16/9]" style={{border:0}} referrerPolicy="no-referrer-when-downgrade"></iframe>
+                
               </div>
             </div>
           </div>
