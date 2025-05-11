@@ -86,7 +86,7 @@ export default function About() {
                   Contact Me <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
                 <a
-                  href="/resume.pdf"
+                  href="public/assets/resume.pdf"
                   target="_blank noopener noreferrer"
                   className="px-6 py-3 rounded-lg border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 font-medium transition-colors flex items-center"
                 >
