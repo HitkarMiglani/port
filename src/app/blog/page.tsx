@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
 import { ArrowRight, Search } from "lucide-react";
+import { link } from "fs";
 
 // Animation variants
 const containerVariants = {
@@ -25,99 +26,88 @@ const itemVariants = {
 const blogPosts = [
   {
     id: 1,
-    title: "Building Modern Web Applications with Next.js",
+    title: "Mastering Prompt Design in Vertex AI: My Learning Journey with Google Cloud",
     excerpt:
-      "Learn how to build modern, performant web applications using Next.js and React.",
+      "In this post, I share my experience learning prompt design in Vertex AI, a powerful tool for building AI applications on Google Cloud.",
     content: "Full content would go here...",
-    date: "March 15, 2024",
-    readTime: "5 min read",
+    date: "April 12, 2025",
+    readTime: "2 min read",
     image:
-      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    category: "Web Development",
+      "https://images.unsplash.com/photo-1698434156098-68e834638679?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzd8fE1hc3RlcmluZyUyMFByb21wdCUyMERlc2lnbiUyMGluJTIwVmVydGV4JTIwQUklM0ElMjBNeSUyMExlYXJuaW5nJTIwSm91cm5leSUyMHdpdGglMjBHb29nbGUlMjBDbG91ZHxlbnwwfHwwfHx8MA%3D%3D",
+    category: "Google Cloud",
     featured: true,
     author: "Hitkar Miglani",
     authorImage: "/profile-pic.jpg",
-    tags: ["Next.js", "React", "JavaScript"],
+    tags: ["Vertex AI", "Google Cloud", "AI"],
+    link: "https://medium.com/@miglanihitkar/mastering-prompt-design-in-vertex-ai-my-learning-journey-with-google-cloud-2723c82831c3"
   },
   {
     id: 2,
-    title: "The Future of CSS: Tailwind CSS and Utility-First Approach",
+    title: "Mastering Real-World AI Application Design with Gemini and Imagen: My Learning Journey with Google Cloud",
     excerpt:
-      "Explore the benefits of utility-first CSS and how Tailwind CSS is changing the way we style web applications.",
+      "In this post, I share my experience learning how to design real-world AI applications using Gemini and Imagen on Google Cloud.",
     content: "Full content would go here...",
-    date: "February 28, 2024",
-    readTime: "4 min read",
+    date: "April 19, 2025",
+    readTime: "2 min read",
     image:
       "https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    category: "CSS",
+    category: "Gemini AI",
     featured: false,
     author: "Hitkar Miglani",
     authorImage: "/profile-pic.jpg",
-    tags: ["CSS", "Tailwind", "Web Design"],
+    tags: ["Gemini AI", "Imagen", "Google Cloud"],
+    link: "https://medium.com/@miglanihitkar/mastering-real-world-ai-application-design-with-gemini-and-imagen-my-learning-journey-with-google-3a2b65b65d0f"
   },
   {
     id: 3,
-    title: "TypeScript: Why You Should Use It in Your Next Project",
+    title: "Mastering Generative AI with the Gemini API in Vertex AI: My Google Cloud Learning Journey",
     excerpt:
-      "Discover the benefits of using TypeScript in your Next.js projects and how it can improve your development experience.",
+      "In this post, I share my journey of mastering generative AI using the Gemini API in Vertex AI on Google Cloud.",
     content: "Full content would go here...",
-    date: "February 10, 2024",
-    readTime: "6 min read",
+    date: "April 19, 2025",
+    readTime: "2 min read",
     image:
-      "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    category: "TypeScript",
+      "https://images.unsplash.com/photo-1740214610868-fe7681c1e121?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fEluc3BlY3RpbmclMjBSaWNoJTIwRG9jdW1lbnRzJTIwd2l0aCUyMEdlbWluaSUyME11bHRpbW9kYWxpdHklMjBhbmQlMjBNdWx0aW1vZGFsJTIwUkFHJTNBJTIwTXklMjBHb29nbGUlMjBDbG91ZCUyMExlYXJuaW5nJTIwSm91cm5leXxlbnwwfHwwfHx8MA%3D%3D",
+    category: "Generative AI",
     featured: false,
     author: "Hitkar Miglani",
     authorImage: "/profile-pic.jpg",
-    tags: ["TypeScript", "JavaScript", "Programming"],
+    tags: ["Generative AI", "Gemini API", "Vertex AI", "Google Cloud"],
+    link: "https://medium.com/@miglanihitkar/mastering-generative-ai-with-the-gemini-api-in-vertex-ai-my-google-cloud-learning-journey-06527c0f13d1"
   },
   {
     id: 4,
-    title: "Introduction to Machine Learning with Python",
+    title: "Inspecting Rich Documents with Gemini Multimodality and Multimodal RAG: My Google Cloud Learning Journey",
     excerpt:
-      "A beginner-friendly guide to getting started with machine learning using Python and popular libraries like scikit-learn.",
+      "In this post, I share my experience learning how to inspect rich documents using Gemini multimodality and multimodal RAG on Google Cloud.",
     content: "Full content would go here...",
-    date: "January 25, 2024",
-    readTime: "8 min read",
+    date: "April 25, 2025",
+    readTime: "2 min read",
     image:
-      "https://images.unsplash.com/photo-1527474305487-b87b222841cc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    category: "Machine Learning",
+      "https://images.unsplash.com/photo-1654764450273-59862da1a259?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fHJldHJpZXZhbCUyMGF1Z21lbnRlZCUyMGdlbmVyYXRpb258ZW58MHx8MHx8fDI%3D",
+    category: "Document AI",
     featured: true,
     author: "Hitkar Miglani",
     authorImage: "/profile-pic.jpg",
-    tags: ["Machine Learning", "Python", "Data Science"],
+    tags: ["Gemini Multimodality", "Multimodal RAG", "Google Cloud"],
+    link: "https://medium.com/@miglanihitkar/inspecting-rich-documents-with-gemini-multimodality-and-multimodal-rag-my-google-cloud-learning-6a557c38dc3d"
   },
   {
     id: 5,
-    title: "Creating Animations with Framer Motion",
+    title: "Building GenAI Apps with Gemini and Streamlit: My Google Cloud Learning Journey",
     excerpt:
-      "Learn how to create stunning animations for your React applications using the powerful Framer Motion library.",
+      "In this post, I share my experience building generative AI applications using Gemini and Streamlit on Google Cloud.",
     content: "Full content would go here...",
-    date: "January 12, 2024",
-    readTime: "5 min read",
+    date: "April 25, 2025",
+    readTime: "2 min read",
     image:
       "https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    category: "Animation",
+    category: "Streamlit",
     featured: false,
     author: "Hitkar Miglani",
     authorImage: "/profile-pic.jpg",
-    tags: ["React", "Animation", "Framer Motion"],
-  },
-  {
-    id: 6,
-    title: "Web Accessibility: Best Practices for Inclusive Design",
-    excerpt:
-      "Explore essential accessibility practices that every web developer should implement for creating inclusive web applications.",
-    content: "Full content would go here...",
-    date: "December 20, 2023",
-    readTime: "7 min read",
-    image:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    category: "Accessibility",
-    featured: false,
-    author: "Hitkar Miglani",
-    authorImage: "/profile-pic.jpg",
-    tags: ["Accessibility", "Web Development", "HTML"],
+    tags: ["Gemini", "Streamlit", "Google Cloud"],
+    link: "https://medium.com/@miglanihitkar/building-genai-apps-with-gemini-and-streamlit-my-google-cloud-learning-journey-4ef33cae045f"
   },
 ];
 
@@ -207,7 +197,7 @@ export default function Blog() {
         >
           <motion.h1
             variants={itemVariants}
-            className="text-4xl md:text-6xl font-display font-bold mb-6 bg-gradient-to-r from-primary-500 to-primary-700 bg-clip-text text-transparent text-center"
+            className="text-4xl md:text-6xl font-display font-bold mb-6 pb-2 bg-gradient-to-r from-primary-500 to-primary-700 bg-clip-text text-transparent text-center"
           >
             My Blog
           </motion.h1>
@@ -343,8 +333,9 @@ export default function Blog() {
                         </span>
                       </div>
                       <a
-                        href={`/blog/${post.id}`}
+                        href={`${post.link}`}
                         className="inline-flex items-center text-primary-500 hover:text-primary-600 font-medium"
+                        target="_blank"
                       >
                         Read More <ArrowRight className="ml-1 h-4 w-4" />
                       </a>

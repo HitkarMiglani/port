@@ -40,7 +40,7 @@ export default function About() {
           </motion.h1>
 
           <div className="grid md:grid-cols-12 gap-12 items-center">
-            {/* Image Column */}
+            {/* `Image Column */}
             <motion.div
               variants={itemVariants}
               className="md:col-span-5 relative"
@@ -86,12 +86,13 @@ export default function About() {
                   Contact Me <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
                 <a
-                  href="/resume.pdf"
+                  href="https://docs.google.com/document/d/e/2PACX-1vSC-AvLBkf5zQ67mw9B-qB_EdEHgRUB-Ibk8z9X90GgZsFwU_aXxCRtXfBSjrtB_I5ZoEJqfR1wn0kp/pub?embedded=false"
                   target="_blank noopener noreferrer"
                   className="px-6 py-3 rounded-lg border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 font-medium transition-colors flex items-center"
                 >
                   Download Resume <Download className="ml-2 h-4 w-4" />
                 </a>
+               
               </div>
             </motion.div>
           </div>
@@ -123,24 +124,35 @@ export default function About() {
             <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary-500 to-primary-700 z-0"/>
 
             {/* Timeline events */}
-            {[
+            {[{
+                year: "2020",
+                title: "The Beginning",
+                description:
+                  "As the Lockdown began due to Covid-19, I found the amazing world of tech and programing.",
+              },
+              {
+                year: "2021 - 2022",
+                title: "First Programming Experience",
+                description:
+                  "Started learning Python and C++ through online courses and mentors help, building simple projects to understand programming concepts.",
+              },
               {
                 year: "2023",
                 title: "Started University",
                 description:
-                  "Began my Computer Science & Engineering degree program, focusing on core computer science principles and AI.",
+                  "Began my Computer Science & Engineering (AI) degree program, focusing on core computer science principles and AI.",
               },
               {
                 year: "2023",
-                title: "First ML Project",
+                title: "First ML Project - Face Emotion Recognition",
                 description:
                   "Created my first machine learning model for image classification, solidifying my interest in AI and data science.",
               },
               {
                 year: "2024",
-                title: "AlzCare",
+                title: "Web Development Journey",
                 description:
-                  "Built a website using Next.js and Tailwind CSS, For helping Alzhimer Patient's.",
+                  "Explored web development with Next.js and Tailwind CSS, building responsive and interactive web applications.",
               },
               {
                 year: "2025",
@@ -148,9 +160,15 @@ export default function About() {
                 description:
                   "Developed my personal portfolio website to showcase my projects and skills, using NextJS and Framer Motion.",
               },
+              {
+                year: "2025",
+                title: "Journey Continues...",
+                description:
+                  "Continuing to learn and grow in AI, machine learning, and web development, with a focus on building impactful projects.",
+              }
             ].map((event, index) => (
               <motion.div
-                key={index}
+                key={`${event.year}-${event.title}`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -162,8 +180,8 @@ export default function About() {
                 } ${index % 2 === 0 ? "md:pr-12" : "md:pl-12"}`}
               >
                 <div
-                  className={`absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-primary-500 shadow-lg z-20`}
-                ></div>
+                  className={"absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-primary-500 shadow-lg z-20"}
+                />
 
                 <div className="w-full md:w-5/12">
                   <div className="p-6 rounded-xl bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-shadow">
@@ -300,6 +318,18 @@ export default function About() {
                     </div>
                   </div>
                 </div>
+
+                <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+                  <h3 className="text-xl font-display font-bold mb-4 text-primary-500">
+                    Achivements
+                    </h3>
+                  <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
+                    <li>
+                      <strong>Google Arcade Champions Milestone</strong> - Achieved the Champions milestone in the Google Arcade event.
+                    </li>
+                  </ul>
+                </div>
+
               </div>
             </motion.div>
 
@@ -325,7 +355,7 @@ export default function About() {
                     Chitkara University, Punjab, India
                   </p>
                   <p className="text-gray-700 dark:text-gray-300">
-                    Currently in my 2nd year, focusing on artificial
+                    Currently in my 3rd year, focusing on artificial
                     intelligence, machine learning, and web development
                     technologies.
                   </p>

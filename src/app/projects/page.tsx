@@ -25,35 +25,35 @@ const itemVariants = {
 const projects = [
   {
     id: 1,
-    title: "E-commerce Platform",
+    title: "Face Emotion Recognition in Python using CNN",
     description:
-      "A full-stack e-commerce platform built with Next.js, TypeScript, and Stripe for payments. Features include product catalog, cart functionality, user authentication, and order management.",
+      "A web application that uses machine learning to detect emotions from facial expressions in real-time.",
     image:
       "https://images.unsplash.com/photo-1557821552-17105176677c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    tags: ["Next.js", "TypeScript", "Stripe", "Tailwind CSS"],
+    tags: ["Neural Networks", "TensorFlow.js", "Emotion Detection","Python"],
     link: "#",
-    github: "https://github.com/",
+    github: "https://github.com/HitkarMiglani/Face-Emotion-Recognition-in-Python-using-CNN",
     featured: true,
-    category: "web",
-    completionDate: "March 2025",
+    category: "AI",
+    completionDate: "November 2023",
   },
   {
     id: 2,
-    title: "Task Management App",
+    title: "Poly Play in C++",
     description:
-      "A task management application with real-time updates using Firebase and React. Includes features like task categorization, due dates, notifications, and team collaboration.",
+      "",
     image:
       "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    tags: ["React", "Firebase", "Material UI", "Redux"],
+    tags: ["C++", "Game Development","BFS"],
     link: "#",
-    github: "https://github.com/",
+    github: "https://github.com/HitkarMiglani/Flask_Project_Youtube_Utility",
     featured: true,
-    category: "web",
-    completionDate: "January 2025",
+    category: "Terminal",
+    completionDate: "May 2024",
   },
   {
     id: 3,
-    title: "Portfolio Website",
+    title: "",
     description:
       "A modern portfolio website built with Next.js, Framer Motion, and Tailwind CSS. Features smooth animations, responsive design, and dark mode support.",
     image:
