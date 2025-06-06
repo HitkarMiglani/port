@@ -340,6 +340,7 @@ export default function Blog() {
                         href={`${post.link}`}
                         className="inline-flex items-center text-primary-500 hover:text-primary-600 font-medium"
                         target="_blank"
+                        rel="noopener noreferrer"
                       >
                         Read More <ArrowRight className="ml-1 h-4 w-4" />
                       </a>
