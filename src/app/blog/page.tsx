@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
 import { ArrowRight, Search } from "lucide-react";
-import { link } from "fs";
 
 // Animation variants
 const containerVariants = {
@@ -26,7 +25,8 @@ const itemVariants = {
 const blogPosts = [
   {
     id: 1,
-    title: "Mastering Prompt Design in Vertex AI: My Learning Journey with Google Cloud",
+    title:
+      "Mastering Prompt Design in Vertex AI: My Learning Journey with Google Cloud",
     excerpt:
       "In this post, I share my experience learning prompt design in Vertex AI, a powerful tool for building AI applications on Google Cloud.",
     content: "Full content would go here...",
@@ -39,11 +39,12 @@ const blogPosts = [
     author: "Hitkar Miglani",
     authorImage: "/profile-pic.jpg",
     tags: ["Vertex AI", "Google Cloud", "AI"],
-    link: "https://medium.com/@miglanihitkar/mastering-prompt-design-in-vertex-ai-my-learning-journey-with-google-cloud-2723c82831c3"
+    link: "https://medium.com/@miglanihitkar/mastering-prompt-design-in-vertex-ai-my-learning-journey-with-google-cloud-2723c82831c3",
   },
   {
     id: 2,
-    title: "Mastering Real-World AI Application Design with Gemini and Imagen: My Learning Journey with Google Cloud",
+    title:
+      "Mastering Real-World AI Application Design with Gemini and Imagen: My Learning Journey with Google Cloud",
     excerpt:
       "In this post, I share my experience learning how to design real-world AI applications using Gemini and Imagen on Google Cloud.",
     content: "Full content would go here...",
@@ -56,11 +57,12 @@ const blogPosts = [
     author: "Hitkar Miglani",
     authorImage: "/profile-pic.jpg",
     tags: ["Gemini AI", "Imagen", "Google Cloud"],
-    link: "https://medium.com/@miglanihitkar/mastering-real-world-ai-application-design-with-gemini-and-imagen-my-learning-journey-with-google-3a2b65b65d0f"
+    link: "https://medium.com/@miglanihitkar/mastering-real-world-ai-application-design-with-gemini-and-imagen-my-learning-journey-with-google-3a2b65b65d0f",
   },
   {
     id: 3,
-    title: "Mastering Generative AI with the Gemini API in Vertex AI: My Google Cloud Learning Journey",
+    title:
+      "Mastering Generative AI with the Gemini API in Vertex AI: My Google Cloud Learning Journey",
     excerpt:
       "In this post, I share my journey of mastering generative AI using the Gemini API in Vertex AI on Google Cloud.",
     content: "Full content would go here...",
@@ -73,11 +75,12 @@ const blogPosts = [
     author: "Hitkar Miglani",
     authorImage: "/profile-pic.jpg",
     tags: ["Generative AI", "Gemini API", "Vertex AI", "Google Cloud"],
-    link: "https://medium.com/@miglanihitkar/mastering-generative-ai-with-the-gemini-api-in-vertex-ai-my-google-cloud-learning-journey-06527c0f13d1"
+    link: "https://medium.com/@miglanihitkar/mastering-generative-ai-with-the-gemini-api-in-vertex-ai-my-google-cloud-learning-journey-06527c0f13d1",
   },
   {
     id: 4,
-    title: "Inspecting Rich Documents with Gemini Multimodality and Multimodal RAG: My Google Cloud Learning Journey",
+    title:
+      "Inspecting Rich Documents with Gemini Multimodality and Multimodal RAG: My Google Cloud Learning Journey",
     excerpt:
       "In this post, I share my experience learning how to inspect rich documents using Gemini multimodality and multimodal RAG on Google Cloud.",
     content: "Full content would go here...",
@@ -90,11 +93,12 @@ const blogPosts = [
     author: "Hitkar Miglani",
     authorImage: "/profile-pic.jpg",
     tags: ["Gemini Multimodality", "Multimodal RAG", "Google Cloud"],
-    link: "https://medium.com/@miglanihitkar/inspecting-rich-documents-with-gemini-multimodality-and-multimodal-rag-my-google-cloud-learning-6a557c38dc3d"
+    link: "https://medium.com/@miglanihitkar/inspecting-rich-documents-with-gemini-multimodality-and-multimodal-rag-my-google-cloud-learning-6a557c38dc3d",
   },
   {
     id: 5,
-    title: "Building GenAI Apps with Gemini and Streamlit: My Google Cloud Learning Journey",
+    title:
+      "Building GenAI Apps with Gemini and Streamlit: My Google Cloud Learning Journey",
     excerpt:
       "In this post, I share my experience building generative AI applications using Gemini and Streamlit on Google Cloud.",
     content: "Full content would go here...",
@@ -107,7 +111,7 @@ const blogPosts = [
     author: "Hitkar Miglani",
     authorImage: "/profile-pic.jpg",
     tags: ["Gemini", "Streamlit", "Google Cloud"],
-    link: "https://medium.com/@miglanihitkar/building-genai-apps-with-gemini-and-streamlit-my-google-cloud-learning-journey-4ef33cae045f"
+    link: "https://medium.com/@miglanihitkar/building-genai-apps-with-gemini-and-streamlit-my-google-cloud-learning-journey-4ef33cae045f",
   },
 ];
 
@@ -411,9 +415,9 @@ export default function Blog() {
                     </p>
 
                     <div className="flex flex-wrap gap-2 mb-4">
-                      {post.tags.map((tag, tagIndex) => (
+                      {post.tags.map((tag) => (
                         <span
-                          key={tagIndex}
+                          key={tag}
                           className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs rounded-full"
                         >
                           #{tag}
@@ -431,7 +435,9 @@ export default function Blog() {
                         </span>
                       </div>
                       <a
-                        href={`/blog/${post.id}`}
+                        href={`${post.link}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="inline-flex items-center text-primary-500 hover:text-primary-600 font-medium text-sm"
                       >
                         Read More <ArrowRight className="ml-1 h-4 w-4" />
@@ -458,61 +464,6 @@ export default function Blog() {
               </button>
             </div>
           )}
-        </motion.div>
-      </section>
-
-      {/* Newsletter Subscription */}
-      <section className="mt-24 px-8 md:px-12 lg:px-24 py-16 bg-gradient-to-r from-primary-500 to-primary-700 text-white">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="max-w-4xl mx-auto text-center"
-        >
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-            Stay Updated
-          </h2>
-          <p className="text-lg mb-8 text-white/90 max-w-2xl mx-auto">
-            Subscribe to my newsletter to receive notifications about new blog
-            posts, tutorials, and updates.
-          </p>
-
-          <form
-            className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto"
-            onSubmit={handleNewsletterSubmit}
-          >
-            <input
-              type="email"
-              placeholder="Your email address"
-              value={subscribeEmail}
-              onChange={(e) => setSubscribeEmail(e.target.value)}
-              className="px-4 py-3 rounded-lg flex-grow text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
-              required
-            />
-            <button
-              type="submit"
-              className="px-6 py-3 bg-white text-primary-600 font-medium rounded-lg hover:bg-gray-100 transition-colors"
-              disabled={isSubscribing}
-            >
-              {isSubscribing ? "Subscribing..." : "Subscribe"}
-            </button>
-          </form>
-
-          {subscribeSuccess === true && (
-            <p className="mt-4 text-sm text-green-400">
-              Successfully subscribed to the newsletter!
-            </p>
-          )}
-          {subscribeSuccess === false && (
-            <p className="mt-4 text-sm text-red-400">
-              Failed to subscribe. Please try again.
-            </p>
-          )}
-
-          <p className="mt-4 text-sm text-white/70">
-            No spam, unsubscribe at any time.
-          </p>
         </motion.div>
       </section>
     </div>

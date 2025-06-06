@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Download, CheckCircle2 } from "lucide-react";
 
@@ -58,7 +57,7 @@ export default function About() {
                   />
                   */}
                 </div>
-                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-tr from-primary-500/30 to-transparent opacity-60"/>
+                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-tr from-primary-500/30 to-transparent opacity-60" />
               </div>
             </motion.div>
 
@@ -68,14 +67,14 @@ export default function About() {
               className="md:col-span-7 space-y-6"
             >
               <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
-                I&apos;m a motivated Computer Science & Engineering student with a
-                passion for AI, Machine Learning, and building modern web
+                I&apos;m a motivated Computer Science & Engineering student with
+                a passion for AI, Machine Learning, and building modern web
                 applications that solve real-world problems.
               </p>
               <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
-                Currently in my 2nd year of study, I&apos;m combining my academic
-                knowledge with practical projects to develop a well-rounded
-                skill set in software development and data science.
+                Currently in my 2nd year of study, I&apos;m combining my
+                academic knowledge with practical projects to develop a
+                well-rounded skill set in software development and data science.
               </p>
 
               <div className="flex flex-wrap gap-4 pt-4">
@@ -92,7 +91,6 @@ export default function About() {
                 >
                   Download Resume <Download className="ml-2 h-4 w-4" />
                 </a>
-               
               </div>
             </motion.div>
           </div>
@@ -110,7 +108,7 @@ export default function About() {
         >
           <div className="text-center mb-12">
             <h2 className="text-3xl font-display font-bold mb-4">My Journey</h2>
-            <div className="w-20 h-1 bg-primary-500 mx-auto mb-4"/>
+            <div className="w-20 h-1 bg-primary-500 mx-auto mb-4" />
             <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               My path in technology began with a curiosity about how things work
               digitally and has evolved into a passion for creating elegant
@@ -121,10 +119,11 @@ export default function About() {
           {/* Timeline */}
           <div className="relative">
             {/* Timeline line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary-500 to-primary-700 z-0"/>
+            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary-500 to-primary-700 z-0" />
 
             {/* Timeline events */}
-            {[{
+            {[
+              {
                 year: "2020",
                 title: "The Beginning",
                 description:
@@ -165,7 +164,7 @@ export default function About() {
                 title: "Journey Continues...",
                 description:
                   "Continuing to learn and grow in AI, machine learning, and web development, with a focus on building impactful projects.",
-              }
+              },
             ].map((event, index) => (
               <motion.div
                 key={`${event.year}-${event.title}`}
@@ -180,7 +179,9 @@ export default function About() {
                 } ${index % 2 === 0 ? "md:pr-12" : "md:pl-12"}`}
               >
                 <div
-                  className={"absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-primary-500 shadow-lg z-20"}
+                  className={
+                    "absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-primary-500 shadow-lg z-20"
+                  }
                 />
 
                 <div className="w-full md:w-5/12">
@@ -286,15 +287,15 @@ export default function About() {
                       <h4 className="font-semibold mb-2">Frontend</h4>
                       <ul className="space-y-1 text-gray-700 dark:text-gray-300">
                         <li className="flex items-center">
-                          <div className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-2"/>
+                          <div className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-2" />
                           Next.js
                         </li>
                         <li className="flex items-center">
-                          <div className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-2"/>
+                          <div className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-2" />
                           Tailwind CSS
                         </li>
                         <li className="flex items-center">
-                          <div className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-2"/>
+                          <div className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-2" />
                           BootStrap
                         </li>
                       </ul>
@@ -303,15 +304,15 @@ export default function About() {
                       <h4 className="font-semibold mb-2">Backend & ML</h4>
                       <ul className="space-y-1 text-gray-700 dark:text-gray-300">
                         <li className="flex items-center">
-                          <div className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-2"/>
+                          <div className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-2" />
                           TensorFlow
                         </li>
                         <li className="flex items-center">
-                          <div className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-2"/>
+                          <div className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-2" />
                           Node.js
                         </li>
                         <li className="flex items-center">
-                          <div className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-2"/>
+                          <div className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-2" />
                           MongoDB
                         </li>
                       </ul>
@@ -322,14 +323,15 @@ export default function About() {
                 <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md">
                   <h3 className="text-xl font-display font-bold mb-4 text-primary-500">
                     Achivements
-                    </h3>
+                  </h3>
                   <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
                     <li>
-                      <strong>Google Arcade Champions Milestone</strong> - Achieved the Champions milestone in the Google Arcade event.
+                      <strong>Google Arcade Champions Milestone</strong> -
+                      Achieved the Champions milestone in the Google Arcade
+                      event.
                     </li>
                   </ul>
                 </div>
-
               </div>
             </motion.div>
 
@@ -382,9 +384,9 @@ export default function About() {
                         issuer: "edX",
                         date: "2023",
                       },
-                    ].map((cert, index) => (
+                    ].map((cert) => (
                       <div
-                        key={index}
+                        key={`${cert.name}-${cert.date}`}
                         className="p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-between"
                       >
                         <div>
@@ -417,7 +419,7 @@ export default function About() {
         >
           <div className="text-center mb-12">
             <h2 className="text-3xl font-display font-bold mb-4">My Values</h2>
-            <div className="w-20 h-1 bg-primary-500 mx-auto mb-4"/>
+            <div className="w-20 h-1 bg-primary-500 mx-auto mb-4" />
             <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               The core principles that guide my work and learning approach.
             </p>
@@ -426,23 +428,26 @@ export default function About() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               {
+                id: 1,
                 title: "Continuous Learning",
                 description:
                   "I believe in constantly expanding my knowledge and skills to stay at the forefront of technology.",
               },
               {
+                id: 2,
                 title: "Problem Solving",
                 description:
                   "I enjoy tackling complex problems and finding elegant, efficient solutions through creative thinking.",
               },
               {
+                id: 3,
                 title: "Collaborative Growth",
                 description:
                   "I value working with others, sharing knowledge, and growing together as a community.",
               },
             ].map((value, index) => (
               <motion.div
-                key={index}
+                key={value.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

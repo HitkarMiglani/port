@@ -20,10 +20,18 @@
 
 @layer base {
   * {
-    @apply border-gray-200 dark:border-gray-800;
+    border-color: #e5e7eb; /* Tailwind border-gray-200 */
+  }
+  .dark * {
+    border-color: #1f2937; /* Tailwind border-gray-800 */
   }
   body {
-    @apply bg-white text-gray-900 dark:bg-gray-900 dark:text-white;
+    background-color: #ffffff;
+    color: #111827;
+  }
+  .dark body {
+    background-color: #111827;
+    color: #ffffff;
   }
 }
 

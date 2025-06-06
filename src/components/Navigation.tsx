@@ -34,11 +34,10 @@ export function Navigation() {
                 return (
                   <Link
                     key={item.name}
-                    href={item.path}
-                    className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
+                    href={item.path}                    className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
                       isActive
-                        ? "text-primary-500 border-b-2 border-primary-500"
-                        : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-700"
+                        ? "text-primary-600 dark:text-primary-400 border-b-2 border-primary-500"
+                        : "text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:border-gray-300 dark:hover:border-gray-700"
                     }`}
                   >
                     {item.name}

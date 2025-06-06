@@ -41,7 +41,7 @@ const projects = [
     id: 2,
     title: "Poly Play in C++",
     description:
-      "",
+      "A terminal-based game developed in C++ that implements the Breadth-First Search (BFS) algorithm for pathfinding. Players navigate through a grid to reach a target while avoiding obstacles.",
     image:
       "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
     tags: ["C++", "Game Development","BFS"],
@@ -53,17 +53,17 @@ const projects = [
   },
   {
     id: 3,
-    title: "",
+    title: "Portfolio Website",
     description:
       "A modern portfolio website built with Next.js, Framer Motion, and Tailwind CSS. Features smooth animations, responsive design, and dark mode support.",
     image:
       "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
     tags: ["Next.js", "Framer Motion", "Tailwind CSS", "TypeScript"],
     link: "#",
-    github: "https://github.com/",
+    github: "https://github.com/HitkarMiglani/port",
     featured: false,
     category: "web",
-    completionDate: "December 2024",
+    completionDate: "January 2025",
   },
   {
     id: 4,
@@ -430,6 +430,7 @@ export default function Projects() {
           </a>
         </motion.div>
       </section>
+    
     </div>
   );
 }
